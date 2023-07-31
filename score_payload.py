@@ -39,7 +39,7 @@ suspicious_opcodes = {
 
 
 # ペイロードとアーキテクチャを引数に受け取る
-def score_payload(payload, architecture="x86"):
+def score_payload(payload, architecture):
     score = 0  # 怪しさを表すスコア
     prev_byte = None  # 前のバイト
     consecutive_count = 0  # 同一バイトが連続した回数
@@ -83,6 +83,8 @@ def score_payload(payload, architecture="x86"):
 def main():
     payload = input("payload: ")
     architecture = input("architecture: ")
+    if architecture == "":
+        architecture = "x86"
 
     result = score_payload(payload, architecture)
 
